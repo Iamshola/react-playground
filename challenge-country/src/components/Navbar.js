@@ -8,10 +8,10 @@ const changeTheme = Machine({
   initial: "dark",
   states: {
     dark: {
-      on: { CHANGE: "light" },
+      on: { CHANGE: "bg-light" },
     },
     light: {
-      on: { CHANGE: "dark" },
+      on: { CHANGE: "bg-dark" },
     },
   },
 })
@@ -23,25 +23,27 @@ class Navbar extends React.Component {
       allData: [], 
       clickTerm: false
     }
-     this.handleDarkMode = this.handleDarkMode.bind(this)
+    //  this.handleDarkMode = this.handleDarkMode.bind(this)
   }
 
-  handleDarkMode(e) {
-    this.setState({ clickTerm: !this.state.clickTerm })
-  }
+  // handleDarkMode(e) {
+  //   this.setState({ clickTerm: !this.state.clickTerm })
+  // }
 
  
 
   render() {
     const [current, send] = useMachine(changeTheme)
+    
+    console.log(current)
     return (
       <div>
-        {/* <nav class={` navbar navbar-expand-lg navbar-light ${this.state.clickTerm ? 'bg-dark' : 'bg-light '} `}>
+        <nav class={` navbar navbar-expand-lg navbar-light ${current.matches("bg-dark") ? 'bg-dark' : 'bg-light'} `}>
           <div class="container d-flex justify-content-between">
             <a className="navbar-brand" href="/">Where in the world?</a>
-            <button onClick={this.handleDarkMode}>Dark Mode</button>
+            <button onClick={() => send("CHANGE")}>Change Theme</button>
           </div>
-        </nav> */}
+        </nav>
       </div>
     )
   }
