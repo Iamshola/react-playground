@@ -96,7 +96,8 @@ class Index extends React.Component {
               <Link 
                 to={{
                   pathname: `/country/${country.alpha3Code}`, 
-                  state: this.state.allData[i] 
+                  state: this.state.allData[i],
+                  countryIndex: i
                 }}
                 
               >

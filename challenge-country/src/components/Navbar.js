@@ -5,36 +5,28 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      allData: []
+      allData: [], 
+      clickTerm: false
     }
-    this.handleClick = this.handleClick.bind(this)
+     this.handleDarkMode = this.handleDarkMode.bind(this)
   }
 
-
-  handleClick(e) {
-    this.setState({ clickTerm: e.target.value })
+  handleDarkMode(e) {
+    this.setState({ clickTerm: !this.state.clickTerm })
   }
   
   render() {
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container d-flec justify-content-between">
+        {/* <nav class={` navbar navbar-expand-lg navbar-light ${this.state.clickTerm ? 'bg-dark' : 'bg-light '} `}>
+          <div class="container d-flex justify-content-between">
             <a className="navbar-brand" href="/">Where in the world?</a>
-            <button>Dark Mode</button>
+            <button onClick={this.handleDarkMode}>Dark Mode</button>
           </div>
-        </nav>
-
-
-
-
-        </div>
-
-
+        </nav> */}
+      </div>
     )
   }
-
-
 }
 
 export default Navbar
