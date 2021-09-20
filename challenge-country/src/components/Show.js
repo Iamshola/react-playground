@@ -31,7 +31,6 @@ render() {
       <div className={`container mt-3 ${this.props.pieceOfState.matches("dark") ? 'bg-light' : 'bg-dark'}`}>
        <div className="row">
           <div className="col-12 col-lg-6">
-
             <img src={this.state.selectedCountry.flag} className="rounded float-left" alt={this.state.selectedCountry.name} />
           </div>
           <div className="col-12 col-lg-6 mt-5">
