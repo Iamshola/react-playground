@@ -3,6 +3,15 @@ on:
   pull_request:
     branches: [master]
     types: [closed]
+    labels:
+      required_for_merge:
+        # PR is blocked until it has all of these labels
+        - ready_to_merge
+      block_merge:
+        # PR is blocked as long as it has at least one of these labels
+        - WIP
+        - in_review 
+        - to_be_discussed
 jobs:
   merge-master-into-test:
     if: github.event.pull_request.merged == true
