@@ -1,8 +1,7 @@
 name: PRs to master
 on: 
   pull_request:
-    branches: [master]
-    types: [closed]
+    types: [opened]
     labels:
       required_for_merge:
         # PR is blocked until it has all of these labels
@@ -12,17 +11,3 @@ on:
         - WIP
         - in_review 
         - to_be_discussed
-jobs:
-  merge-master-into-test:
-    if: github.event.pull_request.merged == true
-    timeout-minutes: 2
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Merge master back to test
-      run: |
-          git fetch --unshallow
-          git checkout test
-          git pull
-          git merge --no-ff master -m "Auto-merge master back to test"
-          git push
